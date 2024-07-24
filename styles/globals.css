@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.auth {
+    @apply flex-center min-h-screen w-full;
+}
+
+@layer utilities {
+    /* ===== ALIGNMENTS */
+    .flex-center {
+        @apply flex justify-center items-center;
+    }
+}
