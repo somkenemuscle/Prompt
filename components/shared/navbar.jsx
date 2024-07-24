@@ -71,7 +71,7 @@ const Navbar = () => {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className={`text-sm leading-6 ${navbarBackground ? 'text-gray-900' : 'text-white'
+                                className={`text-sm font-medium leading-6 ${navbarBackground ? 'text-gray-900' : 'text-white'
                                     }`}
                             >
                                 {item.name}
