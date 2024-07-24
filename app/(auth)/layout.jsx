@@ -1,8 +1,12 @@
+import Navbar from "@components/shared/navbar"
 function Layout({ children }) {
     return (
-        <main className='auth'>
-            {children}
-        </main>
+        <div >
+            <Navbar />
+            <main className='auth'>
+                {children}
+            </main>
+        </div>
     )
 }
 
