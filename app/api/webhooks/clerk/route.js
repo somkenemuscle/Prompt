@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 
 import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
+import { deleteAllPromptsByUserId } from "@lib/actions/prompt.action";
 
 export async function POST(req) {
     // Retrieve the webhook secret from environment variables
@@ -52,6 +53,9 @@ export async function POST(req) {
     // Handle user creation event
     if (eventType === "user.created") {
         const { id, email_addresses, image_url, username } = evt.data;
+        console.log(id, email_addresses, image_url, username)
+        console.log(evt.data)
+
 
         const user = {
             clerkId: id,
@@ -71,7 +75,7 @@ export async function POST(req) {
             });
         }
 
-        return NextResponse.json({ message: "OK", user: newUser });
+        return NextResponse.json({ message: "user created", user: newUser });
     }
 
     // Handle user update event
@@ -86,7 +90,7 @@ export async function POST(req) {
 
         const updatedUser = await updateUser(id, user);
 
-        return NextResponse.json({ message: "OK", user: updatedUser });
+        return NextResponse.json({ message: "user updated", user: updatedUser });
     }
 
     // Handle user deletion event
@@ -94,8 +98,10 @@ export async function POST(req) {
         const { id } = evt.data;
 
         const deletedUser = await deleteUser(id);
+        console.log(deletedUser)
+        const test = await deleteAllPromptsByUserId(deletedUser._id)
 
-        return NextResponse.json({ message: "OK", user: deletedUser });
+        return NextResponse.json({ message: "user deleted", user: deletedUser, tests:  test});
     }
 
     // Log webhook details for debugging purposes

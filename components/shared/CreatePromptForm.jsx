@@ -21,8 +21,8 @@ export const formSchema = z.object({
 });
 
 const CreatePromptForm = ({ action, data = null, userId }) => {
-    const router = useRouter();
 
+    const router = useRouter();
 
     const initialValues = data && action === 'Update' ? {
         prompt: data?.prompt,
