@@ -17,7 +17,7 @@ const Navbar = () => {
     // State to control the navbar background color on scroll
     const [navbarBackground, setNavbarBackground] = useState(false);
 
-    
+
     // Add scroll event listener to change navbar background color
     useEffect(() => {
         const handleScroll = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-    
+
 
     return (
         <div>
@@ -82,15 +82,9 @@ const Navbar = () => {
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                         {/* Log in link for large screens */}
 
-
                         {/* Render links if a user is signed in */}
                         <SignedIn>
-                            <SignedOut>
-                                <SignInButton />
-                            </SignedOut>
-                            <SignedIn>
-                                <UserButton />
-                            </SignedIn>
+                            <UserButton />
                         </SignedIn>
 
                         {/* Render links if a user is signed out */}
@@ -149,12 +143,7 @@ const Navbar = () => {
                                 <div className="py-6">
                                     {/* Render links if a user is signed in */}
                                     <SignedIn>
-                                        <SignedOut>
-                                            <SignInButton />
-                                        </SignedOut>
-                                        <SignedIn>
-                                            <UserButton />
-                                        </SignedIn>
+                                        <UserButton />
                                     </SignedIn>
 
                                     {/* Render links if a user is signed out */}

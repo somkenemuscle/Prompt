@@ -27,17 +27,22 @@ const PromptPage = () => {
           <li key={prompt._id}>
             <h2>{prompt.prompt}</h2>
             <p>Site: {prompt.site}</p>
-            <p>Author: {prompt.author.username}</p>
+            <p className="text-blue-500 hover:underline" >
+              <Link href={`/profile/${prompt.author.username}/`}>
+                username: {prompt.author.username}
+              </Link>
+            </p>
             <p>Author: {prompt.author.email}</p>
             <p>Created At: {new Date(prompt.createdAt).toLocaleDateString()}</p>
             {/* Use Link component for client-side navigation */}
-            <Link className="text-blue-500 hover:underline" href={`/prompts/${prompt._id}`}>
+            < Link className="text-blue-500 hover:underline" href={`/prompts/${prompt._id}`}>
               View More
             </Link>
           </li>
-        ))}
-      </ul>
-    </div>
+        ))
+        }
+      </ul >
+    </div >
   );
 };
 

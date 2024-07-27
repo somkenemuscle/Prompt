@@ -3,5 +3,5 @@ export const navigation = [
     { name: 'Prompts', href: '/prompts' },
     { name: 'Add-Prompts', href: '/prompts/add' },
     { name: 'About Us', href: '/about' },
-    { name: 'Company', href: '#' }
+    { name: 'Profile', href: '/profile' }
 ];
