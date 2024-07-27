@@ -82,6 +82,7 @@ const Navbar = () => {
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                         {/* Log in link for large screens */}
 
+
                         {/* Render links if a user is signed in */}
                         <SignedIn>
                             <UserButton />
@@ -143,7 +144,12 @@ const Navbar = () => {
                                 <div className="py-6">
                                     {/* Render links if a user is signed in */}
                                     <SignedIn>
-                                        <UserButton />
+                                        <SignedOut>
+                                            <SignInButton />
+                                        </SignedOut>
+                                        <SignedIn>
+                                            <UserButton />
+                                        </SignedIn>
                                     </SignedIn>
 
                                     {/* Render links if a user is signed out */}

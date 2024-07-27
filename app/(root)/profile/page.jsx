@@ -1,13 +1,14 @@
 import { getUserPrompts } from "@lib/actions/prompt.action";
 import { getUserById } from "@lib/actions/user.actions";
 import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 
 const ProfilePage = async () => {
   const { userId } = auth();
 
   // Redirect to the sign-in page if the user ID is not found (i.e., user is not authenticated)
-  if (!userId) return null;
+  if (!userId) return redirect('/sign-in');
 
   // Fetch the user details from the database using the retrieved user ID
   const user = await getUserById(userId);
