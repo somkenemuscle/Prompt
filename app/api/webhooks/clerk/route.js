@@ -53,10 +53,7 @@ export async function POST(req) {
     // Handle user creation event
     if (eventType === "user.created") {
         const { id, email_addresses, image_url, username } = evt.data;
-        console.log(id, email_addresses, image_url, username)
-        console.log(evt.data)
-
-
+    
         const user = {
             clerkId: id,
             email: email_addresses[0].email_address,
@@ -98,10 +95,8 @@ export async function POST(req) {
         const { id } = evt.data;
 
         const deletedUser = await deleteUser(id);
-        console.log(deletedUser)
-        const test = await deleteAllPromptsByUserId(deletedUser._id)
 
-        return NextResponse.json({ message: "user deleted", user: deletedUser, tests:  test});
+        return NextResponse.json({ message: "user deleted", user: deletedUser});
     }
 
     // Log webhook details for debugging purposes
