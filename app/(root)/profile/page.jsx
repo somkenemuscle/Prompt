@@ -19,17 +19,18 @@ const ProfilePage = async () => {
   return (
     <div>
       <h1>{user.username}'s Prompts</h1>
-      <Image 
-            alt="profile-pic"
-            src={user.photo}
-            height={58}
-            width={58}
-            />
-
+      <Image
+        alt="profile-pic"
+        src={user.photo}
+        height={58}
+        width={58}
+        className="rounded-full"
+      />
       <ul>
+
         {prompts.map((prompt) => (
           <li key={prompt._id}>
-           
+
             <h2>{prompt.prompt}</h2>
             <p>{prompt.site}</p>
             <Link href={`/prompts/${prompt._id}`}>View More</Link>
