@@ -6,8 +6,10 @@ import { DeleteConfirmation } from "@components/shared/DeleteConfirmation";
 
 
 const page = async ({ params: { id } }) => {
+  
   const { userId } = auth();
   const prompt = await getPromptById(id);
+
   return (
     <div>
       <ul>

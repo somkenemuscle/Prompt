@@ -11,17 +11,14 @@ const PromptPage = () => {
       try {
         const data = await getAllPrompts(); // Fetch prompts
         setPrompts(data); // Set prompts in state
-        console.log(prompts)
-        console.log(data)
-
       } catch (error) {
         console.error("Error fetching prompts:", error);
       }
     };
-
     fetchPrompts(); // Fetch prompts when component mounts
   }, []);
 
+  
   return (
     <div>
       <h1>Prompts</h1>
@@ -30,7 +27,6 @@ const PromptPage = () => {
           <li key={prompt._id}>
             <h2>{prompt.prompt}</h2>
             <p>Site: {prompt.site}</p>
-            <p>photo-  {prompt.author.photo}</p>
             <p className="text-blue-500 hover:underline" >
               <Link href={`/profile/${prompt.author.username}/`}>
                 username: {prompt.author.username}
