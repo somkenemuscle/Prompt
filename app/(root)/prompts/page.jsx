@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link"; // Import Next.js Link component
 import { getAllPrompts } from "@lib/actions/prompt.action";
+import Image from "next/image";
 
 const PromptPage = () => {
   const [prompts, setPrompts] = useState([]);
@@ -18,7 +19,7 @@ const PromptPage = () => {
     fetchPrompts(); // Fetch prompts when component mounts
   }, []);
 
-  
+
   return (
     <div>
       <h1>Prompts</h1>
@@ -27,6 +28,14 @@ const PromptPage = () => {
           <li key={prompt._id}>
             <h2>{prompt.prompt}</h2>
             <p>Site: {prompt.site}</p>
+            {prompt.img ? (
+              <Image
+                alt="prompt-image"
+                src={prompt.img}
+                width={200}
+                height={200}
+              />
+            ) : null}
             <p className="text-blue-500 hover:underline" >
               <Link href={`/profile/${prompt.author.username}/`}>
                 username: {prompt.author.username}
