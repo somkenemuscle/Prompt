@@ -13,12 +13,12 @@ const page = async ({ params: { id } }) => {
   const prompt = await getPromptById(id);
 
   return (
-    <div>
-      <h1>Update Prompt</h1>
+    <div className="mt-6">
       <CreatePromptForm
         action='Update'
         userId={user._id}
         data={prompt}
+        header='Update Prompt'
       />
     </div>
   )

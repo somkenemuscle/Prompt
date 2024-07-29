@@ -14,40 +14,18 @@ import {
 const Navbar = () => {
     // State to control the mobile menu open/close
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    // State to control the navbar background color on scroll
-    const [navbarBackground, setNavbarBackground] = useState(false);
-
-
-    // Add scroll event listener to change navbar background color
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 10) {
-                setNavbarBackground(true);
-            } else {
-                setNavbarBackground(false);
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
 
     return (
         <div>
-            <header
-                className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${navbarBackground ? 'bg-white shadow-lg' : 'bg-transparent'
-                    }`}
-            >
-                <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
+            <header className='fixed inset-x-0 top-0 z-50'>
+                <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 text-white bg-gray-900 ">
                     <div className="flex lg:flex-1">
                         {/* Company logo */}
                         <Link href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <img
                                 alt="Company Logo"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                src="https://tailwindui.com/img/logos/mark.svg?color=white"
                                 className="h-8 w-auto"
                                 width={154}
                                 height={154}
@@ -73,8 +51,7 @@ const Navbar = () => {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className={`text-sm font-medium leading-6 ${navbarBackground ? 'text-gray-900' : 'text-white'
-                                    }`}
+                                className='text-sm font-medium leading-6'
                             >
                                 {item.name}
                             </Link>
@@ -94,8 +71,7 @@ const Navbar = () => {
                         <SignedOut>
                             <Link
                                 href="/sign-in"
-                                className={`text-sm font-semibold leading-6 ${navbarBackground ? 'text-gray-900' : 'text-white'
-                                    }`}>
+                                className='text-sm font-semibold leading-6'>
                                 Sign in
                             </Link>
                         </SignedOut>

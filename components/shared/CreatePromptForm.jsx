@@ -21,10 +21,10 @@ import { useUploadThing } from "@lib/uploadthing"
 export const formSchema = z.object({
     prompt: z.string().min(1, "A Prompt is required"),
     site: z.string().min(1, "The Site is required"),
-    img: z.string().url().min(1, "The url is required")
+    img: z.string().url().min(1, "Kindly Choose an image")
 });
 
-const CreatePromptForm = ({ action, data = null, userId }) => {
+const CreatePromptForm = ({ action, data = null, userId, header }) => {
 
     const { startUpload } = useUploadThing("media")
 
@@ -123,47 +123,61 @@ const CreatePromptForm = ({ action, data = null, userId }) => {
     }
 
     return (
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <CustomField
-                    control={form.control}
-                    name='site'
-                    formLabel='Let us know the site'
-                    className='w-96'
-                    render={({ field }) => <Input {...field} />}
-                />
-                <CustomField
-                    control={form.control}
-                    name='prompt'
-                    formLabel='Enter Your Prompt'
-                    className='w-96'
-                    render={({ field }) => <Textarea rows={4} {...field} />}
-                />
-                <CustomField
-                    control={form.control}
-                    name='img'
-                    formLabel='Pick an image'
-                    className='w-96'
-                    render={({ field }) => (
-                        <>
-                            {field.value && (
-                                <img
-                                    src={field.value}
-                                    alt="Current image"
-                                    className="mb-2 w-48 h-48 object-cover"
-                                />
+        <div  className="flex flex-col items-center justify-center min-h-screen">
+            <h1 className="text-3xl font-bold mb-9">{header}</h1>
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6" >
+                    <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg border-t-2 border-t-slate-100 space-y-8">
+                        <CustomField
+                            control={form.control}
+                            name='site'
+                            formLabel='Let us know the site'
+                            className='w-full'
+                            render={({ field }) => (
+                                <Input {...field} className="w-full px-3 py-2 border rounded-md focus:outline-none " />
                             )}
-                            <Input
-                                accept="image/*"
-                                onChange={(e) => { handleImage(e, field.onChange) }}
-                                type='file'
-                            />
-                        </>
-                    )}
-                />
-                <Button type="submit">Submit</Button>
-            </form>
-        </Form>
+                        />
+                        <CustomField
+                            control={form.control}
+                            name='prompt'
+                            formLabel='Enter Your Prompt'
+                            className='w-full'
+                            render={({ field }) => (
+                                <Textarea rows={4} {...field} className="w-full px-3 py-2 border rounded-md focus:outline-none" />
+                            )}
+                        />
+                        <CustomField
+                            control={form.control}
+                            name='img'
+                            formLabel='Pick an image'
+                            className='w-full'
+                            render={({ field }) => (
+                                <>
+                                    {field.value && (
+                                        <img
+                                            src={field.value}
+                                            alt="Current image"
+                                            className="mb-2 w-48 h-48 object-cover border rounded-md"
+                                        />
+                                    )}
+                                    <Input
+                                        accept="image/*"
+                                        onChange={(e) => { handleImage(e, field.onChange) }}
+                                        type='file'
+                                        className="w-full px-3 py-2 border rounded-md focus:outline-none "
+                                    />
+                                </>
+                            )}
+                        />
+                        <Button type="submit" className="w-full px-4 py-2 bg-slate-950 text-white rounded-md hover:bg-slate-900 focus:outline-none focus:bg-slate-800">
+                            Submit
+                        </Button>
+                    </div>
+                </form>
+            </Form>
+        </div>
+
+
 
     )
 }

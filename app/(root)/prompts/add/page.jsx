@@ -15,13 +15,12 @@ const CreatePromptPage = async () => {
   const user = await getUserById(userId);
 
   return (
-    <div className="mt-36">
-      <h1>Create Prompt</h1>
-
+    <div>
       {/* Render the form for creating a prompt, passing the action type and user ID */}
       <CreatePromptForm
         action='Add'
         userId={user._id}
+        header='Create A Prompt'
       />
     </div>
   );
