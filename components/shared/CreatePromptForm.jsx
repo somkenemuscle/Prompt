@@ -144,7 +144,22 @@ const CreatePromptForm = ({ action, data = null, userId }) => {
                     name='img'
                     formLabel='Pick an image'
                     className='w-96'
-                    render={({ field }) => <Input accept="image/*" onChange={(e) => { handleImage(e, field.onChange) }} type='file' />}
+                    render={({ field }) => (
+                        <>
+                            {field.value && (
+                                <img
+                                    src={field.value}
+                                    alt="Current image"
+                                    className="mb-2 w-48 h-48 object-cover"
+                                />
+                            )}
+                            <Input
+                                accept="image/*"
+                                onChange={(e) => { handleImage(e, field.onChange) }}
+                                type='file'
+                            />
+                        </>
+                    )}
                 />
                 <Button type="submit">Submit</Button>
             </form>
