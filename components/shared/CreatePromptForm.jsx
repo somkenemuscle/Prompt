@@ -123,10 +123,10 @@ const CreatePromptForm = ({ action, data = null, userId, header }) => {
     }
 
     return (
-        <div  className="flex flex-col items-center justify-center min-h-screen">
+        <div className="flex flex-col items-center justify-center min-h-screen">
             <h1 className="text-3xl font-bold mb-9">{header}</h1>
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6" >
+            <Form className='mx-auto' {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="cursor-pointer mt-6 p-3" >
                     <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg border-t-2 border-t-slate-100 space-y-8">
                         <CustomField
                             control={form.control}
@@ -164,7 +164,7 @@ const CreatePromptForm = ({ action, data = null, userId, header }) => {
                                         accept="image/*"
                                         onChange={(e) => { handleImage(e, field.onChange) }}
                                         type='file'
-                                        className="w-full px-3 py-2 border rounded-md focus:outline-none "
+                                        className="w-full px-3 py-2 border rounded-md focus:outline-none cursor-pointer"
                                     />
                                 </>
                             )}
