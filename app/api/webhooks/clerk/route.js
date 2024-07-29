@@ -51,7 +51,7 @@ export async function POST(req) {
     // Handle user creation event
     if (eventType === "user.created") {
         const { id, email_addresses, image_url, username } = evt.data;
-    
+
         const user = {
             clerkId: id,
             email: email_addresses[0].email_address,
@@ -77,7 +77,7 @@ export async function POST(req) {
     if (eventType === "user.updated") {
         const { id, image_url, username } = evt.data;
 
-        // Provide default values for firstName and lastName if they are null
+
         const user = {
             username: username,
             photo: image_url
@@ -94,7 +94,7 @@ export async function POST(req) {
 
         const deletedUser = await deleteUser(id);
 
-        return NextResponse.json({ message: "user deleted", user: deletedUser});
+        return NextResponse.json({ message: "user deleted", user: deletedUser });
     }
 
     // Log webhook details for debugging purposes

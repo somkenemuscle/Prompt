@@ -1,4 +1,5 @@
 export const defaultValues = {
     prompt: "",
-    site: ""
+    site: "",
+    img:""
   };

@@ -7,7 +7,7 @@ import { redirect } from "next/navigation"; // Function to handle page redirecti
 const CreatePromptPage = async () => {
   // Retrieve the current user's ID from Clerk authentication
   const { userId } = auth();
-  
+
   // Redirect to the sign-in page if the user ID is not found (i.e., user is not authenticated)
   if (!userId) redirect('/sign-in');
 
@@ -16,13 +16,12 @@ const CreatePromptPage = async () => {
 
   return (
     <div className="mt-36">
-      <h1>Create Prompt</h1> 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At deserunt, magnam accusantium iure voluptates ab voluptate ex maiores dignissimos.</p> 
-      
+      <h1>Create Prompt</h1>
+
       {/* Render the form for creating a prompt, passing the action type and user ID */}
       <CreatePromptForm
-        action='Add' 
-        userId={user._id} 
+        action='Add'
+        userId={user._id}
       />
     </div>
   );

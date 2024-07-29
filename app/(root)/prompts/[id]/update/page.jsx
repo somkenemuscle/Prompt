@@ -14,7 +14,7 @@ const page = async ({ params: { id } }) => {
 
   return (
     <div>
-      <h1>Update Page</h1>
+      <h1>Update Prompt</h1>
       <CreatePromptForm
         action='Update'
         userId={user._id}
