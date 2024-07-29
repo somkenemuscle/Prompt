@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import CreatePromptForm from "@components/shared/CreatePromptForm";
 
-const page = async ({ params: { id } }) => {
+const UpdateHomePage = async ({ params: { id } }) => {
   const { userId } = auth();
 
   if (!userId) redirect("/sign-in");
@@ -24,4 +24,4 @@ const page = async ({ params: { id } }) => {
   )
 }
 
-export default page
+export default UpdateHomePage

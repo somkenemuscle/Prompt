@@ -26,11 +26,13 @@ export const formSchema = z.object({
 
 const CreatePromptForm = ({ action, data = null, userId, header }) => {
 
+    //hook to call the upload process to upload thing
     const { startUpload } = useUploadThing("media")
 
     //state to store the image file
     const [files, setFiles] = useState([]);
-
+    
+    //router to route to paths
     const router = useRouter();
 
     // Set initial form values based on action type and provided data
@@ -46,7 +48,8 @@ const CreatePromptForm = ({ action, data = null, userId, header }) => {
         defaultValues: initialValues
     });
 
-
+ 
+    //function to handle image change
     function handleImage(e, fieldChange) {
         e.preventDefault();
 
