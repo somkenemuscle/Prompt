@@ -103,7 +103,7 @@ const CreatePromptForm = ({ action, data = null, userId, header }) => {
                     router.push(`/prompts/${newPrompt._id}`)
                 }
             } catch (error) {
-                console.log(error);
+                console.log('error:', error);
             }
         }
 

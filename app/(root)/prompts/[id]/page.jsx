@@ -4,11 +4,16 @@ import { Button } from "@components/ui/button";
 import Link from "next/link";
 import { DeleteConfirmation } from "@components/shared/DeleteConfirmation";
 
-
 const page = async ({ params: { id } }) => {
-  
+
   const { userId } = auth();
+
   const prompt = await getPromptById(id);
+  if (!prompt) {
+    return (<>
+      <h1>page not found</h1>
+    </>)
+  }
 
   return (
     <div>

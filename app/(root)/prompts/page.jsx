@@ -21,10 +21,10 @@ const PromptPage = () => {
 
 
   return (
-    <div className="cursor-pointer mt-40 mb-4 container mx-auto max-w-lg border border-gray-300 rounded-lg p-0">
+    <div className="cursor-pointer mt-40 mb-4 container mx-auto max-w-lg  p-0">
       <ul className="flex flex-col ">
         {prompts.map((prompt) => (
-          <li key={prompt._id} className="flex p-4 border-b border-gray-200">
+          <li key={prompt._id} className="border border-gray-300 rounded-lg flex p-4">
             <div className="flex flex-col flex-grow">
               <div className="flex items-center mb-2">
                 <Link href={`/profile/${prompt.author.username}/`}>
@@ -34,6 +34,7 @@ const PromptPage = () => {
                     width={100}
                     height={100}
                     className="w-8 h-8 rounded-full mr-2"
+                    priority
                   />
                 </Link>
                 <p className="text-black">
@@ -48,8 +49,9 @@ const PromptPage = () => {
                   src={prompt.img}
                   width={200}
                   height={200}
-                  layout="responsive"
                   className="w-full rounded-lg mt-4 mb-2"
+                  layout="responsive"
+                  priority
                 />
               ) : null}
               <Link className="text-blue-500 hover:underline text-sm mt-2" href={`/prompts/${prompt._id}`}>
